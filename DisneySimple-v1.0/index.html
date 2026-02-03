@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valero Dreams</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <h1 class="site-title">Valero Dreams <span class="accent">+</span></h1>
+            <nav class="main-nav">
+                <a href="index.html">INICIO</a>
+                <a href="search.html">BÚSQUEDA</a>
+            </nav>
+            <div class="user-menu">
+                <div class="user-trigger">
+                    <span class="user-name">Hola Maite! </span>
+                    <img src="https://ui-avatars.com/api/?name=Maite&background=7C3AED&color=fff" alt="Avatar"
+                        class="user-avatar">
+                </div>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Configuración</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item text-danger">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <img src="https://lumiere-a.akamaihd.net/v1/images/avatar-twow-videobg02_fae5d62e.jpeg?region=0,0,1920,1080&width=768"
+            alt="Poster" class="hero-poster">
+        <div class="container hero-content">
+            <h2 class="hero-title">Avatar: El Sentido del Agua</h2>
+            <p class="hero-subtitle">2022 • 3h 12m • Acción, Ciencia Ficción</p>
+            <a href="details.html" class="primary-button">VER AHORA</a>
+            <a href="https://youtu.be/FSyWAxUg3Go?si=S0w_DmpemO_nxgFc" class="secondary-button"
+                target="_blank">TRÁILER</a>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <!-- Filtros -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-genre="all">Todos</button>
+            <button class="filter-btn" data-genre="Ciencia Ficción">Ciencia Ficción</button>
+            <button class="filter-btn" data-genre="Acción">Acción</button>
+            <button class="filter-btn" data-genre="Animación">Animación</button>
+            <button class="filter-btn" data-genre="Fantasía">Fantasía</button>
+            <button class="filter-btn" data-genre="Comedia">Comedia</button>
+        </div>
+
+        <!-- Sección Recomendados -->
+        <h2 class="section-title">Recomendados para ti</h2>
+        <section class="carousel-container" id="recommended-carousel">
+            <button class="carousel-btn prev" onclick="scrollCarousel('recommended-track', -1)">&#10094;</button>
+            <div class="carousel-track-container">
+                <div class="carousel-track" id="recommended-track">
+                    <!-- JS inyectará películas aquí -->
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="scrollCarousel('recommended-track', 1)">&#10095;</button>
+        </section>
+
+        <!-- Sección Novedades -->
+        <h2 class="section-title">Novedades</h2>
+        <section class="carousel-container" id="new-carousel">
+            <button class="carousel-btn prev" onclick="scrollCarousel('new-track', -1)">&#10094;</button>
+            <div class="carousel-track-container">
+                <div class="carousel-track" id="new-track">
+                    <!-- JS inyectará películas aquí -->
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="scrollCarousel('new-track', 1)">&#10095;</button>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Centro San Valero</p>
+            <p>SARA MARCO, SERGIO GOMEZ , AMALIO OSA · Curso: 1SI</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
