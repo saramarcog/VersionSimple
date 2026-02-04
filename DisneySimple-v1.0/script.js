@@ -177,4 +177,78 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 
 // Inicializar
-document.addEventListener('DOMContentLoaded', () => loadAllMovies());
+document.addEventListener('DOMContentLoaded', () => {
+    loadAllMovies();
+    initHeroSlider();
+});
+
+/* --- Hero Slider Logic --- */
+let currentHeroIndex = 0;
+let heroInterval;
+const heroMovies = movies.filter(m => m.type === 'new' || m.year >= 2022).slice(0, 5); // Select top 5 new movies
+
+function initHeroSlider() {
+    const sliderContainer = document.getElementById('hero-slider');
+    if (!sliderContainer) return;
+
+    // Generate slides
+    sliderContainer.innerHTML = heroMovies.map((movie, index) => {
+        return `
+            <div class="hero-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
+                <!-- Blurred Background Layer -->
+                <div class="hero-bg-blur" style="background-image: url('${movie.image}')"></div>
+                
+                <div class="container hero-content-inner">
+                    <div class="hero-text">
+                        <h2 class="hero-title">${movie.title}</h2>
+                        <span class="hero-subtitle mb-3 d-block">${movie.year} • ${movie.category}</span>
+                        <div class="hero-buttons">
+                            <a href="details.html" class="primary-button">VER AHORA</a>
+                            <a href="#" class="secondary-button">TRÁILER</a>
+                        </div>
+                    </div>
+                    <div class="hero-poster-container">
+                        <img src="${movie.image}" alt="${movie.title}" class="hero-floating-poster">
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    // Controls
+    document.getElementById('hero-prev')?.addEventListener('click', () => changeHeroSlide(-1));
+    document.getElementById('hero-next')?.addEventListener('click', () => changeHeroSlide(1));
+
+    // Auto play
+    startHeroInterval();
+}
+
+function changeHeroSlide(direction) {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length === 0) return;
+
+    // Remove active class from current
+    slides[currentHeroIndex].classList.remove('active');
+
+    // Calculate new index
+    currentHeroIndex += direction;
+    if (currentHeroIndex >= slides.length) currentHeroIndex = 0;
+    if (currentHeroIndex < 0) currentHeroIndex = slides.length - 1;
+
+    // Add active class to new
+    slides[currentHeroIndex].classList.add('active');
+
+    // Reset timer on manual interaction
+    resetHeroInterval();
+}
+
+function startHeroInterval() {
+    heroInterval = setInterval(() => {
+        changeHeroSlide(1);
+    }, 5000); // Change every 5 seconds
+}
+
+function resetHeroInterval() {
+    clearInterval(heroInterval);
+    startHeroInterval();
+}

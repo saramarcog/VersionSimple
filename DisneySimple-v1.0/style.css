@@ -1,14 +1,29 @@
 /* Estilos Base similares a tu biblioteca */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');*/
 
 body {
     margin: 0;
     font-family: 'Poppins', system-ui, Arial, sans-serif;
-    /* Degradado de Morado a Azul */
-    background: linear-gradient(135deg, #2e0b3b 0%, #0f172a 100%);
-    background-attachment: fixed;
+    /* Degradado Animado Más Visible */
+    background: linear-gradient(-45deg, #000000, #130025, #101822, #130025);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
     min-height: 100vh;
     color: #ffffff;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
@@ -19,7 +34,7 @@ body {
 
 /* Header - Basado en tu .site-header */
 .site-header {
-    background-color: rgba(41, 22, 58, 0.95);
+    background-color: #130025;
     padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -98,13 +113,7 @@ body {
 }
 
 /* Oscurecimiento para que el texto se lea sobre la imagen */
-.hero-banner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, #101822 0%, rgba(16, 24, 34, 0.4) 50%, rgba(16, 24, 34, 0.3) 100%);
-    z-index: 1;
-}
+/* .hero-banner::after removed to prevent covering text */
 
 .hero-poster {
     position: absolute;
@@ -135,6 +144,7 @@ body {
     background: linear-gradient(to right, #fff 20%, #c4b5fd 40%, #a142ee 60%, #fff 80%);
     background-size: 200% auto;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shine 5s linear infinite;
     line-height: 1.1;
@@ -165,7 +175,7 @@ body {
     padding: 14px 32px;
     font-size: 1rem;
     font-weight: 700;
-    border-radius: 4px;
+    border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
@@ -185,7 +195,7 @@ body {
     padding: 14px 32px;
     font-size: 1rem;
     font-weight: 700;
-    border-radius: 4px;
+    border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
@@ -273,6 +283,7 @@ body {
 .carousel-btn {
     position: absolute;
     top: 50%;
+    border-radius: 25px;
     transform: translateY(-50%);
     background: rgba(170, 79, 255, 0.256);
     border: none;
@@ -280,7 +291,7 @@ body {
     font-size: 2rem;
     cursor: pointer;
     z-index: 10;
-    height: 100%;
+    height: 15%;
     padding: 0 10px;
     opacity: 0;
     transition: opacity 0.3s;
@@ -475,6 +486,10 @@ body {
     text-decoration: none;
     font-size: 0.9rem;
     transition: background-color 0.2s;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .dropdown-item:hover {
@@ -483,10 +498,14 @@ body {
     color: #fff;
 }
 
+.dropdown-item:last-child {
+    margin-bottom: 0;
+}
+
 .dropdown-divider {
     height: 1px;
     background-color: rgba(255, 255, 255, 0.1);
-    margin: 6px 0;
+    margin: 0 0 8px 0;
 }
 
 .text-danger:hover {
@@ -628,4 +647,200 @@ body {
     padding: 24px 0;
     text-align: center;
     margin-top: 40px;
+}
+
+/* Hero Slider Styles */
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hero Slide Layout */
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    /* Center content vertically */
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, #101822 0%, rgba(16, 24, 34, 0.4) 50%, rgba(16, 24, 34, 0.3) 100%);
+    z-index: 1;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Blurred Background */
+.hero-bg-blur {
+    position: absolute;
+    inset: -20px;
+    /* Slight bleed to avoid edge issues with blur */
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px) brightness(0.4);
+    z-index: -1;
+    transform: scale(1.1);
+    /* Zoom slightly */
+}
+
+/* Inner Layout Flex */
+.hero-content-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    padding-top: 40px;
+    /* Account for header */
+}
+
+/* Text Side */
+.hero-text {
+    flex: 1;
+    padding-right: 40px;
+    animation: slideUp 0.8s ease-out;
+}
+
+/*Para separar los botones de el titulo*/
+.hero-subtitle {
+    display: block;
+    margin-bottom: 32px;
+    /* Separación con el botón */
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    font-weight: 500;
+}
+
+/*@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}*/
+
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(to right, #fff 20%, #c4b5fd 40%, #a142ee 60%, #fff 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shine 5s linear infinite;
+}
+
+/* Poster Side */
+.hero-poster-container {
+    flex: 0 0 300px;
+    /* Altura del poster */
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+/*Le da el efecto al poster de que esta en 3D*/
+.hero-floating-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transform: rotateY(-10deg);
+    transition: transform 0.3s;
+}
+
+.hero-floating-poster:hover {
+    transform: rotateY(0) scale(1.02);
+}
+
+/* Responsive adjustments for Hero */
+@media (max-width: 900px) {
+    .hero-content-inner {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-poster-container {
+        height: 300px;
+        flex: 0 0 auto;
+        margin-bottom: 20px;
+    }
+
+    .hero-floating-poster {
+        transform: none;
+        /* Disable rotation on mobile for simpler look */
+    }
+
+    .hero-text {
+        padding-right: 0;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Controls */
+.hero-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.hero-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 2rem;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
+
+.hero-btn:hover {
+    background-color: #7C3AED;
+    border-color: #7C3AED;
+    transform: scale(1.1);
 }
