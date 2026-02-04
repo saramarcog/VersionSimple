@@ -4,37 +4,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Búsqueda - Disney+ Clone</title>
+    <title>Búsqueda - Valero Dreams </title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <h1 class="site-title">Disney<span class="accent">+</span></h1>
+            <h1 class="site-title">Valero Dreams <span class="accent">+</span></h1>
             <nav class="main-nav">
                 <a href="index.html">INICIO</a>
+                <div class="nav-dropdown">
+                    <span class="nav-link">CATEGORÍAS</span>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Acción</a>
+                        <a href="#" class="dropdown-item">Comedia</a>
+                        <a href="#" class="dropdown-item">Drama</a>
+                        <a href="#" class="dropdown-item">Ciencia Ficción</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Todas</a>
+                    </div>
+                </div>
                 <a href="search.html" class="accent">BÚSQUEDA</a>
             </nav>
+            <div class="user-menu">
+                <div class="user-trigger">
+                    <span class="user-name">Hola Maite! </span>
+                    <img src="https://ui-avatars.com/api/?name=Maite&background=7C3AED&color=fff" alt="Avatar"
+                        class="user-avatar">
+                </div>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Configuración</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item text-danger">Cerrar sesión</a>
+                </div>
+            </div>
         </div>
     </header>
 
     <main class="container">
-        <div style="margin: 40px 0;">
-            <input type="text" placeholder="Título, personaje o género"
-                style="width: 100%; padding: 20px; font-size: 1.5rem; background: #1a222e; border: none; color: white; border-radius: 4px; outline: none;">
+        <!-- Barra de Búsqueda Estilizada -->
+        <div class="search-container">
+            <input type="text" placeholder="Películas, series o cortos" class="search-input-fancy">
         </div>
 
-        <h2 class="section-title">Explorar</h2>
-        <section class="movie-grid">
-            <!-- Reutilizamos el grid para mostrar resultados (vacío por ahora) -->
+        <!-- Sección Explorar -->
+        <span class="section-label">EXPLORAR</span>
+        <section class="category-grid">
+            <a href="#" class="category-card bg-originales">
+                <span>Originales</span>
+            </a>
+            <a href="#" class="category-card bg-peliculas">
+                <span>Películas</span>
+            </a>
+            <a href="#" class="category-card bg-series">
+                <span>Series</span>
+            </a>
+            <a href="#" class="category-card bg-accion">
+                <span>Acción</span>
+            </a>
+            <a href="#" class="category-card bg-junior">
+                <span>Animación</span>
+            </a>
+            <a href="#" class="category-card bg-naturaleza">
+                <span>Ciencia Ficción</span>
+            </a>
         </section>
+
+        <h2 class="section-title">Recomendados para ti</h2>
+        <section class="carousel-container" id="recommended-carousel">
+            <button class="carousel-btn prev" onclick="scrollCarousel('recommended-track', -1)">&#10094;</button>
+            <div class="carousel-track-container">
+                <div class="carousel-track" id="recommended-track">
+                    <!-- JS inyectará películas aquí -->
+                </div>
+            </div>
+            <button class="carousel-btn next" onclick="scrollCarousel('recommended-track', 1)">&#10095;</button>
+        </section>
+
+
+        <!-- Script simple para llenar resultados de ejemplo visualmente si está vacío -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const grid = document.getElementById('search-results');
+                if (grid && grid.children.length === 0) {
+                    // Si quieres que aparezcan pelis de ejemplo, descomenta o usa el script principal
+                    // loadAllMovies();
+                    // Nota: El script.js actual busca 'recommended-track' no 'search-results'.
+                    // Si quieres ver pelis aqui, necesitamos actualizar script.js o copiar HTML estático.
+                }
+            });
+        </script>
     </main>
 
     <footer class="site-footer">
         <div class="container">
-            <p>Trabajo de Lenguaje de Marcas - Centro San Valero</p>
-            <p>SARA MARCO · Curso: 1SI</p>
+            <p>Centro San Valero</p>
+            <p>SARA MARCO, SERGIO GOMEZ , AMALIO OSA · Curso: 1SI</p>
         </div>
     </footer>
 

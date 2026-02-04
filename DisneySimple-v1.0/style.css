@@ -1,9 +1,13 @@
 /* Estilos Base similares a tu biblioteca */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
 body {
     margin: 0;
-    font-family: system-ui, Arial, sans-serif;
-    background-color: #101822;
-    /* Azul oscuro Disney */
+    font-family: 'Poppins', system-ui, Arial, sans-serif;
+    /* Degradado de Morado a Azul */
+    background: linear-gradient(135deg, #2e0b3b 0%, #0f172a 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
     color: #ffffff;
 }
 
@@ -15,7 +19,7 @@ body {
 
 /* Header - Basado en tu .site-header */
 .site-header {
-    background-color: rgba(16, 24, 34, 0.95);
+    background-color: rgba(41, 22, 58, 0.95);
     padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -28,7 +32,8 @@ body {
 
 .site-title {
     font-size: 1.8rem;
-    margin: 0;
+    margin: 0 40px 0 0;
+    /* Separación derecha añadida */
     font-weight: 800;
 }
 
@@ -59,7 +64,7 @@ body {
     left: 0;
     width: 0%;
     height: 2px;
-    background-color: #7C3AED;
+    background-color: #a142ee;
     transition: width 0.3s;
 }
 
@@ -76,7 +81,7 @@ body {
 
 
 .accent {
-    color: #7C3AED;
+    color: #ac70e1;
 }
 
 /* Hero Section */
@@ -123,11 +128,22 @@ body {
 
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 800;
     margin: 0 0 16px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Efecto de texto degradado brillante */
+    background: linear-gradient(to right, #fff 20%, #c4b5fd 40%, #a142ee 60%, #fff 80%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
     line-height: 1.1;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
 }
 
 .hero-subtitle {
@@ -189,7 +205,14 @@ body {
 }
 
 
-/* Grid de Películas - Idéntico a tu .book-grid */
+/* Grid de Películas - Idéntico a al .book-grid */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
 /* Filtros */
 .filter-bar {
     display: flex;
@@ -251,7 +274,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(170, 79, 255, 0.256);
     border: none;
     color: white;
     font-size: 2rem;
@@ -266,7 +289,7 @@ body {
 }
 
 .carousel-btn:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(115, 0, 255, 0.214);
 }
 
 .carousel-container:hover .carousel-btn {
@@ -300,12 +323,36 @@ body {
 }
 
 
+/* Actualización de Tarjetas: Glassmorphism más limpio */
 .movie-card {
-    background-color: #1a222e;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #a142ee;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.movie-title {
+    margin: 0 0 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    /* Aseguramos blanco para contraste sobre fondo oscuro */
+}
+
+.movie-category {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #cbd5e1;
 }
 
 .movie-card:hover {
@@ -361,6 +408,40 @@ body {
 
 .user-trigger:hover .user-avatar {
     border-color: #7C3AED;
+}
+
+/* Nuevo Estilo para Dropdown de Navegación */
+.nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-link {
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1.2px;
+    padding: 5px 0;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.nav-dropdown .dropdown-menu {
+    right: auto;
+    left: 0;
+    width: 200px;
+    top: 100%;
+    margin-top: 10px;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .dropdown-menu {
@@ -424,6 +505,120 @@ body {
     .movie-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Estilos página de Búsqueda */
+.search-container {
+    margin: 40px 0;
+    position: relative;
+}
+
+.search-input-fancy {
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    /* Espacio para icono */
+    font-size: 1.2rem;
+    background-color: #334155;
+    /* Gris azulado oscuro */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-input-fancy::placeholder {
+    color: #94a3b8;
+}
+
+.search-input-fancy:focus {
+    background-color: #475569;
+    box-shadow: 0 0 0 2px #7C3AED;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    pointer-events: none;
+    font-size: 1.2rem;
+}
+
+.section-label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    display: block;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.category-card {
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    border-color: #fff;
+}
+
+/* Fondos simulados con gradientes elegantes */
+.bg-originales {
+    background: linear-gradient(135deg, #0f172a, #334155);
+}
+
+.bg-peliculas {
+    background: linear-gradient(135deg, #7f1d1d, #b91c1c);
+}
+
+.bg-series {
+    background: linear-gradient(135deg, #064e3b, #047857);
+}
+
+.bg-accion {
+    background: linear-gradient(135deg, #451a03, #92400e);
+}
+
+.bg-junior {
+    background: linear-gradient(135deg, #e836ec, #db2777);
+}
+
+/* Tono más Disney Jr */
+.bg-naturaleza {
+    background: linear-gradient(135deg, #14532d, #15803d);
+}
+
+.category-card span {
+    padding: 12px 15px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    width: 100%;
+    /* Gradiente sutil negro abajo para leer mejor el texto */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
 }
 
 /* Footer - Igual al de tu biblioteca */

@@ -2,7 +2,7 @@ const movies = [
     {
         title: "Avatar: El Sentido del Agua",
         category: "Ciencia Ficción, Acción",
-        image: "https://lumiere-a.akamaihd.net/v1/images/p_avatarthewayofwater_199_v2_1ac9b808.jpeg",
+        image: "https://lumiere-a.akamaihd.net/v1/images/image_ccdd5962.jpeg",
         year: 2022,
         type: "new"
     },
@@ -16,49 +16,49 @@ const movies = [
     {
         title: "Black Panther: Wakanda Forever",
         category: "Acción, Aventura",
-        image: "https://lumiere-a.akamaihd.net/v1/images/p_blackpantherwakandaforever_media_2022_4e101349.jpeg",
+        image: "https://pics.filmaffinity.com/Black_Panther_Wakanda_Forever-869269163-large.jpg",
         year: 2022,
         type: "new"
     },
     {
         title: "The Mandalorian",
         category: "Ciencia Ficción",
-        image: "https://lumiere-a.akamaihd.net/v1/images/p_themandalorian_s3_25425_487e793a.jpeg",
+        image: "https://pics.filmaffinity.com/The_Mandalorian_Serie_de_TV-526462730-large.jpg",
         year: 2023,
         type: "recommended"
     },
     {
-        title: "Turning Red",
-        category: "Animación, Comedia",
-        image: "https://lumiere-a.akamaihd.net/v1/images/p_turningred_22361_9766b158.jpeg",
-        year: 2022,
+        title: "Enredados",
+        category: "Animación",
+        image: "https://www.aceprensa.com/wp-content/uploads/2011/01/38757-0.jpg",
+        year: 2010,
         type: "recommended"
     },
     {
         title: "Doctor Strange: Multiverse of Madness",
         category: "Fantasía, Acción",
-        image: "https://lumiere-a.akamaihd.net/v1/images/p_doctorstrangeinthemultiverseofmadness_245_476c24c2.jpeg",
+        image: "https://sm.ign.com/ign_es/movie/d/doctor-str/doctor-strange-in-the-multiverse-of-madness_4pjr.jpg",
         year: 2022,
         type: "new"
     },
     {
         title: "Lightyear",
         category: "Animación, Aventura",
-        image: "https://lumiere-a.akamaihd.net/v1/images/p_lightyear_23293_14c3d25f.jpeg",
+        image: "https://play-lh.googleusercontent.com/PKFoGvETaFE2P3rFnSR6QkyA1RaZL0LneVAlq5FpNG9R2h9YMyvAcp0iV4ayIVYPOSAJI5aINSndeSwGqLQ",
         year: 2022,
         type: "recommended"
     },
     {
-        title: "Thor: Love and Thunder",
+        title: "Spider-Man: No Way Home",
         category: "Acción, Comedia",
-        image: "https://lumiere-a.akamaihd.net/v1/images/p_thorloveandthunder_245_1c1c9c4c.jpeg",
-        year: 2022,
+        image: "https://pics.filmaffinity.com/Spider_Man_No_Way_Home-387287198-large.jpg",
+        year: 2021,
         type: "new"
     },
     {
         title: "Luca",
         category: "Animación, Comedia",
-        image: "https://lumiere-a.akamaihd.net/v1/images/p_luca_21421_6424acab.jpeg",
+        image: "https://www.aceprensa.com/wp-content/uploads/2021/06/Cartel-Luca.jpg",
         year: 2021,
         type: "recommended"
     },
@@ -108,6 +108,8 @@ function createMovieCard(movie) {
 
 function loadCarousel(trackId, filteredMovies) {
     const track = document.getElementById(trackId);
+    if (!track) return; // Salir si no existe el carrusel en esta página
+
     track.innerHTML = ''; // Limpiar
 
     // Resetear posición al filtrar
