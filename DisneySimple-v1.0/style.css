@@ -1,17 +1,27 @@
 /* Estilos Base similares a tu biblioteca */
-/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');*/
+:root {
+    --navy-dark: #020612;
+    --navy-base: #050E24;
+    --navy-light: #0b152d;
+    --navy-card: rgba(15, 28, 58, 0.6);
+    --gold-primary: #d4af37;
+    --gold-hover: #f3c648;
+    --gold-text: #ffe6a7;
+    --text-white: #ffffff;
+}
 
 body {
     margin: 0;
     font-family: 'Poppins', system-ui, Arial, sans-serif;
-    /* Degradado Animado Más Visible */
-    background: linear-gradient(-45deg, #000000, #130025, #101822, #130025);
+    /* Degradado Animado Navy Blue */
+    background: linear-gradient(-45deg, var(--navy-dark), var(--navy-base), #081133, var(--navy-dark));
     background-size: 400% 400%;
     animation: gradientBG 10s ease infinite;
     min-height: 100vh;
-    color: #ffffff;
+    color: var(--text-white);
 }
 
+/*
 @keyframes gradientBG {
     0% {
         background-position: 0% 50%;
@@ -24,7 +34,7 @@ body {
     100% {
         background-position: 0% 50%;
     }
-}
+}*/
 
 .container {
     max-width: 1100px;
@@ -34,9 +44,12 @@ body {
 
 /* Header - Basado en tu .site-header */
 .site-header {
-    background-color: #130025;
+    background-color: rgba(5, 14, 36, 0.85);
     padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 100;
 }
 
 .header-inner {
@@ -59,6 +72,7 @@ body {
 
 .main-nav a {
     color: #fff;
+
     text-decoration: none;
     font-weight: 700;
     font-size: 0.95rem;
@@ -69,7 +83,7 @@ body {
 }
 
 .main-nav a:hover {
-    color: #fff;
+    color: var(--gold-primary);
 }
 
 .main-nav a::after {
@@ -79,7 +93,7 @@ body {
     left: 0;
     width: 0%;
     height: 2px;
-    background-color: #a142ee;
+    background-color: var(--gold-primary);
     transition: width 0.3s;
 }
 
@@ -96,7 +110,7 @@ body {
 
 
 .accent {
-    color: #ac70e1;
+    color: var(--gold-primary);
 }
 
 /* Hero Section */
@@ -140,8 +154,8 @@ body {
     font-size: 4rem;
     font-weight: 800;
     margin: 0 0 16px;
-    /* Efecto de texto degradado brillante */
-    background: linear-gradient(to right, #fff 20%, #c4b5fd 40%, #a142ee 60%, #fff 80%);
+    /* Efecto de texto degradado brillante Dorado */
+    background: linear-gradient(to right, #fff 20%, #fde68a 40%, var(--gold-primary) 60%, #fff 80%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
@@ -168,9 +182,9 @@ body {
     /* Soporte para <a> tags */
     text-decoration: none;
     /* Sin subrayado */
-    background-color: #7C3AED;
-    /* Purple accent */
-    color: white;
+    background-color: var(--gold-primary);
+    /* Gold accent */
+    color: #000000;
     border: none;
     padding: 14px 32px;
     font-size: 1rem;
@@ -209,9 +223,9 @@ body {
 }
 
 .primary-button:hover {
-    background-color: #6D28D9;
+    background-color: var(--gold-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
 }
 
 
@@ -285,7 +299,7 @@ body {
     top: 50%;
     border-radius: 25px;
     transform: translateY(-50%);
-    background: rgba(170, 79, 255, 0.256);
+    background: rgba(35, 12, 56, 0.256);
     border: none;
     color: white;
     font-size: 2rem;
@@ -300,7 +314,7 @@ body {
 }
 
 .carousel-btn:hover {
-    background: rgba(115, 0, 255, 0.214);
+    background: rgba(212, 175, 55, 0.3);
 }
 
 .carousel-container:hover .carousel-btn {
@@ -336,7 +350,7 @@ body {
 
 /* Actualización de Tarjetas: Glassmorphism más limpio */
 .movie-card {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--navy-card);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 12px;
@@ -348,7 +362,7 @@ body {
 
 .movie-card:hover {
     transform: translateY(-8px) scale(1.02);
-    border-color: #a142ee;
+    border-color: var(--gold-primary);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
@@ -368,7 +382,7 @@ body {
 
 .movie-card:hover {
     transform: scale(1.05);
-    border-color: #7C3AED;
+    border-color: var(--gold-primary);
 }
 
 .movie-poster {
@@ -418,7 +432,7 @@ body {
 }
 
 .user-trigger:hover .user-avatar {
-    border-color: #7C3AED;
+    border-color: var(--gold-primary);
 }
 
 /* Nuevo Estilo para Dropdown de Navegación */
@@ -439,6 +453,11 @@ body {
     border: none;
     font-family: inherit;
     cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-dropdown:hover .nav-link {
+    color: var(--gold-primary);
 }
 
 .nav-dropdown .dropdown-menu {
@@ -460,7 +479,7 @@ body {
     top: 100%;
     right: 0;
     width: 180px;
-    background-color: #1a222e;
+    background-color: var(--navy-base);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 8px 0;
@@ -470,7 +489,7 @@ body {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-    z-index: 100;
+    z-index: 1000;
 }
 
 .user-menu:hover .dropdown-menu {
@@ -493,7 +512,7 @@ body {
 }
 
 .dropdown-item:hover {
-    background-color: rgba(124, 58, 237, 0.2);
+    background-color: rgba(212, 175, 55, 0.2);
     /* Tintado suave púrpura */
     color: #fff;
 }
@@ -552,8 +571,8 @@ body {
 }
 
 .search-input-fancy:focus {
-    background-color: #475569;
-    box-shadow: 0 0 0 2px #7C3AED;
+    background-color: #1e293b;
+    box-shadow: 0 0 0 2px var(--gold-primary);
 }
 
 .search-icon {
@@ -730,7 +749,7 @@ body {
     font-weight: 500;
 }
 
-/*@keyframes slideUp {
+@keyframes slideUp {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -740,13 +759,13 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}*/
+}
 
 .hero-title {
     font-size: 3.5rem;
     line-height: 1.1;
     margin-bottom: 16px;
-    background: linear-gradient(to right, #fff 20%, #c4b5fd 40%, #a142ee 60%, #fff 80%);
+    background: linear-gradient(to right, #fff 20%, #fde68a 40%, var(--gold-primary) 60%, #fff 80%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -812,9 +831,10 @@ body {
 .hero-controls {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    transform: translateY(-50%);
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     padding: 0 40px;
@@ -840,7 +860,8 @@ body {
 }
 
 .hero-btn:hover {
-    background-color: #7C3AED;
-    border-color: #7C3AED;
+    background-color: var(--gold-primary);
+    border-color: var(--gold-primary);
+    color: #000;
     transform: scale(1.1);
 }
